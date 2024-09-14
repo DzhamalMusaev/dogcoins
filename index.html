@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogcoin Кликер</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="tab" onclick="showTab('about')">О проекте</div>
+        <div class="tab" onclick="showTab('progress')">Прогресс</div>
+        <div class="tab" onclick="showTab('tasks')">Задания</div>
+    </div>
+
+    <!-- Логотип в углу по центру -->
+    <div class="logo-container">
+        <img src="logo.png" alt="Логотип" class="logo">
+    </div>
+
+    <!-- Вкладка "О проекте" -->
+    <div id="about" class="content-tab">
+        <div class="container">
+            <div class="coin" id="coin" onclick="clickCoin()">
+                🐕
+            </div>
+            <div class="counter">
+                Монет: <span id="coinCount">0</span>
+            </div>
+            <button class="upgrade-btn" id="upgradeBtn" onclick="upgrade()">Улучшение: 100 монет</button>
+            <div class="message" id="upgradeMessage"></div>
+
+            <div class="promo-container">
+                <input type="text" id="promoCode" class="promo-input" placeholder="Введите промокод">
+                <button class="promo-btn" onclick="applyPromo()">Активировать</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вкладка "Прогресс" -->
+    <div id="progress" class="content-tab hidden">
+        <div class="progress-container">
+            <p>Потраченный баланс: <span id="spentBalance">0</span> монет</p>
+            <p>Количество кликов: <span id="clickCount">0</span></p>
+        </div>
+    </div>
+
+    <!-- Вкладка "Задания" -->
+    <div id="tasks" class="content-tab hidden">
+        <div class="task" id="task1" onclick="completeTask(1)">Подписаться на телеграмм канал (250 монет)</div>
+        <div class="task locked">Задание 2 (Откроется после улучшения на 400)</div>
+        <div class="task locked">Задание 3 (Откроется после улучшения на 400)</div>
+        <div class="task locked">Задание 4 (Откроется после улучшения на 400)</div>
+        <div class="task locked">Задание 5 (Откроется после улучшения на 400)</div>
+        <div class="task locked">Задание 6 (Откроется после улучшения на 400)</div>
+    </div>
+
+    <script src="script.js"></script>
+
+<!-- Вкладка "Игра с бомбами" -->
+<div id="bombGame" class="content-tab hidden">
+    <div class="bomb-container">
+        <h3>Ставка: <input type="number" id="betAmount" value="10" min="1" max="coinCount"> монет</h3>
+        <div id="bombGrid" class="grid"></div>
+        <div class="game-controls">
+            <button class="promo-btn" id="startGameBtn" onclick="startBombGame()">Начать игру</button>
+            <button class="promo-btn" id="cashOutBtn" onclick="cashOut()" disabled>Забрать выигрыш</button>
+            <button class="promo-btn" id="resetGameBtn" onclick="resetGame()" disabled>Начать заново</button>
+        </div>
+        <p id="gameStatus"></p>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
